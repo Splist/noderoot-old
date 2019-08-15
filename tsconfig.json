@@ -6,6 +6,8 @@
         "module": "commonjs",
         "moduleResolution": "node",
         "outDir": "dist",
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
         "strict": true,
         "strictPropertyInitialization": false,
         "emitDecoratorMetadata": true,
