@@ -1,11 +1,22 @@
 {
   "name": "noderoot",
   "version": "0.0.0",
-  "main": "index.js",
+  "main": "src/index.ts",
   "description": "",
   "repository": "https://github.com/Splist/noderoot.git",
-  "author": "Jdender~ <jdenderplays@gmail.com>",
+  "homepage": "https://github.com/Splist/noderoot#readme",
+  "bugs": "https://github.com/Splist/noderoot/issues",
+  "contributors": [
+    "Jdender~ <jdenderplays@gmail.com>"
+  ],
   "license": "AGPL-3.0",
-  "scripts": {},
-  "dependencies": {}
+  "scripts": {
+    "up": "ts-node-dev --respawn --files ."
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "ts-node": "^8.3.0",
+    "ts-node-dev": "^1.0.0-pre.40",
+    "typescript": "^3.5.3"
+  }
 }
