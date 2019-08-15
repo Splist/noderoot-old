@@ -1,2 +1,9 @@
+import { NestFactory } from '@nestjs/core';
+import { AppModule } from './app.module';
 
-console.log('Hello world!');
+void async function() {
+
+    const app = await NestFactory.create(AppModule);
+
+    await app.listen(8080);
+}();
