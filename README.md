@@ -1,6 +1,6 @@
 # noderoot
 
-Nanoroot is the reference implementation of Splist, the simple easy to use chat service.
+Noderoot is the reference implementation of Splist, the simple easy to use chat service.
 
 ##
 
