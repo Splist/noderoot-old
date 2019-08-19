@@ -14,5 +14,5 @@ const RootTypeOrmModule = TypeOrmModule.forRoot({
         RootTypeOrmModule, 
         MessagesModule,
     ],
-})
+});
 export class AppModule {}
