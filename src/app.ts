@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { MessagesModule } from './messages/module';
+import { ChannelModule } from './channel';
+import { MessageModule } from './message';
 
 const RootTypeOrmModule = TypeOrmModule.forRoot({
     type: 'sqlite',
@@ -12,7 +13,8 @@ const RootTypeOrmModule = TypeOrmModule.forRoot({
 @Module({
     imports: [
         RootTypeOrmModule, 
-        MessagesModule,
+        ChannelModule,
+        MessageModule,
     ],
 })
 export class AppModule {}
