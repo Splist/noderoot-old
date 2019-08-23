@@ -18,4 +18,12 @@ export class ChannelService {
     fetchById(id: number) {
         return this.repo.findOne(id);   
     }
+
+    async create(input: Partial<Channel>) {
+
+        const result = await this.repo.insert(input);
+
+        // Result isn't strong typed for some reason
+        return result.identifiers[0];
+    }
 }
