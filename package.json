@@ -13,7 +13,7 @@
   "scripts": {
     "up": "ts-node-dev --respawn --files .",
     "build": "tsc",
-    "lint": "eslint src/**/*.ts",
+    "lint": "eslint src/{/**/*,*}.ts",
     "lint:fix": "yarn lint --fix"
   },
   "dependencies": {

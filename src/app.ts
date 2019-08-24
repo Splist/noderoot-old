@@ -12,7 +12,7 @@ const RootTypeOrmModule = TypeOrmModule.forRoot({
 
 @Module({
     imports: [
-        RootTypeOrmModule, 
+        RootTypeOrmModule,
         ChannelModule,
         MessageModule,
     ],
