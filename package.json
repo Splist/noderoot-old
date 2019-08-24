@@ -12,8 +12,9 @@
   "license": "AGPL-3.0",
   "scripts": {
     "up": "ts-node-dev --respawn --files .",
+    "build": "tsc",
     "lint": "eslint src/**/*.ts",
-    "build": "tsc"
+    "lint:fix": "yarn lint --fix"
   },
   "dependencies": {
     "@nestjs/common": "^6.5.3",

@@ -19,9 +19,24 @@
     // Typescript
     "@typescript-eslint/no-unused-vars": "off",
     "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/member-delimiter-style": [
+      "warn", 
+      {
+        "multiline": {
+          "delimiter": "semi",
+          "requireLast": true
+        },
+        "singleline": {
+          "delimiter": "comma",
+          "requireLast": false
+        }
+      }
+    ],
 
     // Style
     "semi": ["error", "always"],
-    "semi-style": ["error", "last"]
+    "semi-style": ["error", "last"],
+    "no-trailing-spaces": "error"
   }
 }
