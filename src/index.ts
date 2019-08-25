@@ -1,6 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app';
 import { ValidationPipe } from '@nestjs/common';
+import { ConfigService } from './config/service';
 
 void async function() {
 
@@ -11,5 +12,7 @@ void async function() {
         transform: true,
     }));
 
-    await app.listen(8080);
+    const { config } = app.get<ConfigService>(ConfigService);
+
+    await app.listen(config.port);
 }();
