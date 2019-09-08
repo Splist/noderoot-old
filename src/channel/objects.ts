@@ -23,13 +23,13 @@ export abstract class BaseChannel {
 
 // A channel with nothing but required
 @ObjectType({ implements: BaseChannel })
-export class NullChannel implements BaseChannel {
+export class LinkChannel implements BaseChannel {
 
     id: number;
     internalName: string;
     parent?: CompoundChannel;
 
-    type: ChannelType.Null;
+    type: ChannelType.Link;
 }
 
 // A channel with children

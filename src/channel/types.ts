@@ -1,5 +1,5 @@
 import { createUnionType, registerEnumType } from 'type-graphql';
-import { NullChannel, CompoundChannel } from './objects';
+import { LinkChannel, CompoundChannel } from './objects';
 
 // Graphql representation of a channel
 // For database see ./entity.ts
@@ -8,7 +8,7 @@ import { NullChannel, CompoundChannel } from './objects';
 
 // Enum of all channel types
 export enum ChannelType {
-    Null = "NULL",
+    Link = "LINK",
     Compound = "COMPOUND",
 }
 
@@ -20,7 +20,7 @@ registerEnumType(ChannelType, {
 export const Channel = createUnionType({
     name: 'Channel',
     types: () => [
-        NullChannel,
+        LinkChannel,
         CompoundChannel,
     ],
 });
