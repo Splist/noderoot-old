@@ -1,22 +1,24 @@
-import { Entity, PrimaryGeneratedColumn, Tree, Column, TreeParent, TreeChildren, OneToMany } from 'typeorm';
-import { Message } from '../message/entity';
+import { Entity, PrimaryGeneratedColumn, Tree, Column, TreeParent, TreeChildren } from 'typeorm';
+import { ChannelType } from './types';
 
+// Database representation of a channel
+// For graphql see ./types.ts
 @Entity()
 @Tree('nested-set')
-export class Channel {
+export class ChannelEntity {
 
     @PrimaryGeneratedColumn()
     id: number;
 
     @Column()
+    type: ChannelType;
+
+    @Column()
     internalName: string;
 
     @TreeParent()
-    parent: Channel;
+    parent: ChannelEntity;
 
     @TreeChildren()
-    children: Channel[];
-
-    @OneToMany(type => Message, msg => msg.channel)
-    messages: Message[];
+    children: ChannelEntity[];
 }
