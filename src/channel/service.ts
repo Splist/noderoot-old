@@ -1,8 +1,7 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Channel } from './entity';
+import { ChannelEntity } from './entity';
 import { TreeRepository } from 'typeorm';
-import { ConfigService } from '../config/service';
 
 @Injectable()
 export class ChannelService {
@@ -10,29 +9,9 @@ export class ChannelService {
     private readonly logger = new Logger(this.constructor.name);
 
     constructor(
-        @InjectRepository(Channel)
-        private readonly repo: TreeRepository<Channel>,
-        private readonly configService: ConfigService,
-    ) {
-        this.ensureRootChannel();
-    }
-
-    async ensureRootChannel() {
-
-        const tree = await this.fetchTree();
-
-        if (tree.length > 0) return;
-
-        this.logger.log('Root channel not found. Creating one...');
-
-        const { config } = this.configService;
-
-        await this.create({
-            internalName: config.internalRootName,
-        });
-
-        this.logger.log('Root channel created.');
-    }
+        @InjectRepository(ChannelEntity)
+        private readonly repo: TreeRepository<ChannelEntity>,
+    ) {}
 
     fetchTree() {
         return this.repo.findTrees();
@@ -42,7 +21,7 @@ export class ChannelService {
         return this.repo.findOne(id);
     }
 
-    async create(input: Partial<Channel>) {
+    async create(input: Partial<ChannelEntity>) {
 
         const result = await this.repo.insert(input);
 
