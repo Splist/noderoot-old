@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { CompoundEntity } from './entity';
+import { CompoundChannel } from './entity';
 import { CompoundService } from './service';
 import { CompoundResolver } from './resolver';
 
-const OrmModule = TypeOrmModule.forFeature([CompoundEntity]);
+const OrmModule = TypeOrmModule.forFeature([CompoundChannel]);
 
 @Module({
     imports: [OrmModule],

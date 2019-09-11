@@ -4,25 +4,14 @@ import { ObjectType, Field, Int } from 'type-graphql';
 
 @Entity()
 @Tree('nested-set')
-export class CompoundEntity extends ChannelEntityBase {
+@ObjectType()
+export class CompoundChannel extends ChannelEntityBase {
 
     @TreeParent()
-    parent?: CompoundEntity;
-
-    @TreeChildren()
-    children: CompoundEntity[]
-}
-
-@ObjectType()
-export class CompoundChannel {
-
-    @Field(type => Int)
-    id: number;
-
-    @Field({ nullable: true })
+    @Field()
     parent?: CompoundChannel;
 
-    // [TODO] Change when implementing other channels
+    @TreeChildren()
     @Field(type => [CompoundChannel])
-    children: CompoundChannel;
+    children: CompoundChannel[]
 }

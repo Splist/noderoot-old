@@ -1,14 +1,14 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { CompoundEntity, CompoundChannel } from './entity';
+import { CompoundChannel } from './entity';
 import { TreeRepository } from 'typeorm';
 
 @Injectable()
 export class CompoundService {
 
     constructor(
-        @InjectRepository(CompoundEntity)
-        private readonly repo: TreeRepository<CompoundEntity>,
+        @InjectRepository(CompoundChannel)
+        private readonly repo: TreeRepository<CompoundChannel>,
     ) {}
 
     fetchById(id: number) {
@@ -23,7 +23,7 @@ export class CompoundService {
         return trees[0];
     }
 
-    async create(input: Partial<CompoundEntity>) {
+    async create(input: Partial<CompoundChannel>) {
 
         const result = await this.repo.insert(input);
 
