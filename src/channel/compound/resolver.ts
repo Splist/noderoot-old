@@ -24,7 +24,7 @@ export class CompoundResolver {
     }
 
     @Query(returns => CompoundChannel)
-    channelRoot() {
+    rootChannel() {
         return this.channels.fetchRoot();
     }
 }
