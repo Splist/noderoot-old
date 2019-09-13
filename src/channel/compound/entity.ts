@@ -8,10 +8,10 @@ import { ObjectType, Field } from 'type-graphql';
 export class CompoundChannel extends BaseChannel {
 
     @TreeParent()
-    @Field()
+    @Field({ nullable: true })
     parent?: CompoundChannel;
 
     @TreeChildren()
-    @Field(type => [CompoundChannel])
+    @Field(type => [CompoundChannel], { nullable: 'itemsAndList' })
     children: CompoundChannel[]
 }

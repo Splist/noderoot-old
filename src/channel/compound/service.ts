@@ -9,7 +9,14 @@ export class CompoundService {
     constructor(
         @InjectRepository(CompoundChannel)
         private readonly repo: TreeRepository<CompoundChannel>,
-    ) {}
+    ) {
+        // Ensure root channel exists
+        this.fetchRoot()
+            .catch(() => this.create({
+                interalName: 'splist',
+                children: [],
+            }));
+    }
 
     fetchById(id: number) {
         return this.repo.findOne(id);
@@ -21,6 +28,14 @@ export class CompoundService {
 
         // "There can only be one!"
         return trees[0];
+    }
+
+    fetchRoot() {
+        return this.repo.findOneOrFail({
+            where: {
+                parent: null,
+            }
+        });
     }
 
     async create(input: Partial<CompoundChannel>) {

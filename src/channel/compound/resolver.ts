@@ -12,14 +12,19 @@ export class CompoundResolver {
     ) {}
 
     @Query(returns => CompoundChannel, { nullable: true })
-    compound(
+    compoundChannel(
         @Args({ name: 'id', type: () => Int}) id: number,
     ) {
         return this.channels.fetchById(id);
     }
 
     @Query(returns => RawScalar)
-    tree() {
+    channelTree() {
         return this.channels.fetchTree();
+    }
+
+    @Query(returns => CompoundChannel)
+    channelRoot() {
+        return this.channels.fetchRoot();
     }
 }
