@@ -1,9 +1,9 @@
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
-import { ObjectType, Field, Int } from 'type-graphql';
+import { InterfaceType, Field, Int } from 'type-graphql';
 
 @Entity()
-@ObjectType()
-export abstract class ChannelEntityBase {
+@InterfaceType()
+export abstract class BaseChannel {
 
     @PrimaryGeneratedColumn()
     @Field(type => Int)
