@@ -11,5 +11,5 @@ export abstract class BaseChannel {
 
     @Column()
     @Field()
-    interalName: string;
+    internalName: string;
 }
