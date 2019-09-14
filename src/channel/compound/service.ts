@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CompoundChannel } from './entity';
 import { TreeRepository } from 'typeorm';
+import { CreateChannelInput } from './input';
 
 @Injectable()
 export class CompoundService {
@@ -12,9 +13,8 @@ export class CompoundService {
     ) {
         // Ensure root channel exists
         this.fetchRoot()
-            .catch(() => this.create({
-                interalName: 'splist',
-                children: [],
+            .catch(() => this.repo.insert({
+                internalName: 'splist',
             }));
     }
 
@@ -38,11 +38,28 @@ export class CompoundService {
         });
     }
 
-    async create(input: Partial<CompoundChannel>) {
+    async create(input: CreateChannelInput) {
 
-        const result = await this.repo.insert(input);
+        const parent = await this.repo.findOneOrFail(input.parent);
+
+        const result = await this.repo.insert({
+            ...input,
+            parent,
+        });
 
         // Result isn't strong typed for some reason
         return result.identifiers[0];
+    }
+
+    async fetchChildren(id: number) {
+
+        const parent = await this.repo.findOneOrFail({
+            where: {
+                id,
+            },
+            relations: ['children'],
+        });
+
+        return parent.children;
     }
 }

@@ -12,6 +12,6 @@ export class CompoundChannel extends BaseChannel {
     parent?: CompoundChannel;
 
     @TreeChildren()
-    @Field(type => [CompoundChannel], { nullable: 'itemsAndList' })
+    @Field(type => [CompoundChannel])
     children: CompoundChannel[]
 }
